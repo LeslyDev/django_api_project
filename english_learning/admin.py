@@ -22,7 +22,13 @@ class LevelAdmin(admin.ModelAdmin):
 
 @admin.register(Theme)
 class ThemeAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name', 'category', 'level', 'icon_tag')
+    readonly_fields = ('icon_tag',)
+
+    def icon_tag(self, obj):
+        return mark_safe(f'<img src={obj.photo.url} width="50" height="50"')
+
+    icon_tag.short_description = 'Изображение'
 
 
 @admin.register(Word)

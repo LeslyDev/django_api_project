@@ -28,7 +28,7 @@ class Word(models.Model):
     translation = models.CharField(max_length=255)
     transcription = models.CharField(max_length=255)
     example = models.CharField(max_length=255)
-    sound = models.SlugField(unique=True)
+    sound = models.URLField(max_length=100)
     # audio_file = AudioField(upload_to='sounds/', blank=True,
     #                         ext_whitelist=(".mp3", ".wav", ".ogg"),
     #                         help_text=("Allowed type - .mp3, .wav, .ogg"))
@@ -51,7 +51,7 @@ class Word(models.Model):
 
 class Theme(models.Model):
     name = models.CharField(max_length=100)
-    photo = models.SlugField(max_length=100, unique=True)
+    photo = models.ImageField(upload_to='themes/', null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING,
                                  related_name='theme_category')
     level = models.ForeignKey(Level, on_delete=models.DO_NOTHING,

@@ -26,7 +26,7 @@ SECRET_KEY = 'w3$d+xt(^7c3qsm-g71r^55vs1i(-nzbroxw52t73a)1qe_%vw'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-API_KEY_SECRET = 'secret_value'
+API_SECRET = 'secret_value'
 # CHANNEL_TYPE_VALUE = 0
 # FREQ_TYPE_VALUE = 8000
 # CONVERT_TYPE_VALUE = 0
@@ -81,10 +81,20 @@ WSGI_APPLICATION = 'django_api_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Password validation
